@@ -1,0 +1,77 @@
+= Hello-World
+:toc:
+:toc-placement!:
+
+A simple "Hello, World!" application written in Go.
+
+toc::[]
+
+== Description
+
+This is a basic Go application that demonstrates the classic "Hello, World!" program. It serves as a simple example of Go syntax and project structure.
+
+== Requirements
+
+* Go 1.24.4 or later
+* Git (for cloning the repository)
+
+== Installation
+
+Clone the repository:
+
+[source,bash]
+----
+git clone https://github.com/rdmueller/Hello-World.git
+cd Hello-World
+----
+
+== Building
+
+To build the application:
+
+[source,bash]
+----
+go build
+----
+
+This will create a binary named `hello-world` in the current directory.
+
+== Running
+
+To run the application:
+
+[source,bash]
+----
+./hello-world
+----
+
+Expected output:
+----
+Hello, World!
+----
+
+Alternatively, you can build and run in one step:
+
+[source,bash]
+----
+go run main.go
+----
+
+== Project Structure
+
+----
+.
+├── .gitignore      # Git ignore file for Go projects
+├── go.mod          # Go module file
+├── main.go         # Main application source code
+└── README.adoc     # This file
+----
+
+== Module Information
+
+* Module name: `hello-world`
+* Go version: 1.24.4
+
+== License
+
+This project is a simple educational example and is provided as-is.
