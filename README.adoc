@@ -2,17 +2,19 @@
 :toc:
 :toc-placement!:
 
-A simple "Hello, World!" application written in Go.
+A simple "Hello, World!" application written in Go and C++.
 
 toc::[]
 
 == Description
 
-This is a basic Go application that demonstrates the classic "Hello, World!" program. It serves as a simple example of Go syntax and project structure.
+This is a basic application that demonstrates the classic "Hello, World!" program in both Go and C++. It serves as a simple example of syntax and project structure for both languages.
 
 == Requirements
 
 * Go 1.24.4 or later
+* C++ compiler (g++ or clang++)
+* Make (for building the C++ version)
 * Git (for cloning the repository)
 
 == Installation
@@ -27,7 +29,9 @@ cd Hello-World
 
 == Building
 
-To build the application:
+=== Go Version
+
+To build the Go application:
 
 [source,bash]
 ----
@@ -36,18 +40,27 @@ go build
 
 This will create a binary named `hello-world` in the current directory.
 
+=== C++ Version
+
+To build the C++ application:
+
+[source,bash]
+----
+cd cpp
+make
+----
+
+This will create a binary named `hello-world-cpp` in the `cpp` directory.
+
 == Running
 
-To run the application:
+=== Go Version
+
+To run the Go application:
 
 [source,bash]
 ----
 ./hello-world
-----
-
-Expected output:
-----
-Hello, World!
 ----
 
 Alternatively, you can build and run in one step:
@@ -57,13 +70,48 @@ Alternatively, you can build and run in one step:
 go run main.go
 ----
 
+=== C++ Version
+
+To run the C++ application:
+
+[source,bash]
+----
+cd cpp
+./hello-world-cpp
+----
+
+=== Expected Output
+
+Both versions produce the same output:
+----
+Hello, World!
+----
+
+You can also provide a name as an argument:
+
+[source,bash]
+----
+./hello-world Alice
+# or
+cd cpp && ./hello-world-cpp Alice
+----
+
+Output:
+----
+Hello, Alice!
+----
+
 == Project Structure
 
 ----
 .
-├── .gitignore      # Git ignore file for Go projects
+├── .gitignore      # Git ignore file for Go and C++ projects
 ├── go.mod          # Go module file
-├── main.go         # Main application source code
+├── main.go         # Main Go application source code
+├── main_test.go    # Go tests
+├── cpp/            # C++ implementation
+│   ├── main.cpp    # Main C++ application source code
+│   └── Makefile    # Build configuration for C++ version
 └── README.adoc     # This file
 ----
 
