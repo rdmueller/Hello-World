@@ -16,3 +16,8 @@ go.work
 
 # Binary output
 hello-world
+cpp/hello-world-cpp
+
+# C++ build artifacts
+*.o
+*.obj
