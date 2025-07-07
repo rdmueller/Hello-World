@@ -2,17 +2,26 @@
 :toc:
 :toc-placement!:
 
-A simple "Hello, World!" application written in Go.
+A simple "Hello, World!" application written in Go and Python.
 
 toc::[]
 
 == Description
 
-This is a basic Go application that demonstrates the classic "Hello, World!" program. It serves as a simple example of Go syntax and project structure.
+This repository contains two implementations of the classic "Hello, World!" program:
+
+* **Go version**: A command-line application that demonstrates Go syntax and project structure
+* **Python version**: A web API built with FastAPI that provides the same functionality via HTTP endpoints
 
 == Requirements
 
+**Go version:**
 * Go 1.24.4 or later
+* Git (for cloning the repository)
+
+**Python version:**
+* Python 3.8 or later
+* pip (Python package manager)
 * Git (for cloning the repository)
 
 == Installation
@@ -25,9 +34,18 @@ git clone https://github.com/rdmueller/Hello-World.git
 cd Hello-World
 ----
 
-== Building
+**For Python version**, install dependencies:
 
-To build the application:
+[source,bash]
+----
+pip install -r requirements.txt
+----
+
+== Building and Running
+
+=== Go Version
+
+To build the Go application:
 
 [source,bash]
 ----
@@ -36,9 +54,7 @@ go build
 
 This will create a binary named `hello-world` in the current directory.
 
-== Running
-
-To run the application:
+To run the Go application:
 
 [source,bash]
 ----
@@ -50,6 +66,18 @@ Expected output:
 Hello, World!
 ----
 
+You can also pass a name as an argument:
+
+[source,bash]
+----
+./hello-world Alice
+----
+
+Expected output:
+----
+Hello, Alice!
+----
+
 Alternatively, you can build and run in one step:
 
 [source,bash]
@@ -57,20 +85,72 @@ Alternatively, you can build and run in one step:
 go run main.go
 ----
 
+=== Python Version
+
+To run the Python FastAPI application:
+
+[source,bash]
+----
+uvicorn main:app --reload
+----
+
+This will start the web server on `http://127.0.0.1:8000`
+
+**API Endpoints:**
+
+* `GET /` - Returns `{"message": "Hello, World!"}`
+* `GET/{name}` - Returns `{"message": "Hello, {name}!"}`
+
+**Example usage:**
+
+[source,bash]
+----
+curl http://127.0.0.1:8000/
+# Returns: {"message":"Hello, World!"}
+
+curl http://127.0.0.1:8000/Alice
+# Returns: {"message":"Hello, Alice!"}
+----
+
+You can also visit `http://127.0.0.1:8000/docs` to see the interactive API documentation.
+
 == Project Structure
 
 ----
 .
-├── .gitignore      # Git ignore file for Go projects
-├── go.mod          # Go module file
-├── main.go         # Main application source code
-└── README.adoc     # This file
+├── .gitignore          # Git ignore file for Go and Python projects
+├── go.mod              # Go module file
+├── main.go             # Go application source code
+├── main_test.go        # Go tests
+├── main.py             # Python FastAPI application
+├── test_main.py        # Python tests
+├── requirements.txt    # Python dependencies
+└── README.adoc         # This file
+----
+
+== Testing
+
+**Go tests:**
+[source,bash]
+----
+go test -v
+----
+
+**Python tests:**
+[source,bash]
+----
+pytest test_main.py -v
 ----
 
 == Module Information
 
+**Go version:**
 * Module name: `hello-world`
 * Go version: 1.24.4
+
+**Python version:**
+* FastAPI framework
+* Python 3.8+ compatible
 
 == License
 
